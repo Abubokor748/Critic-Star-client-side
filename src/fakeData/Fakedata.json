@@ -1,0 +1,67 @@
+[
+    {
+      "serviceImage": "https://i.ibb.co.com/mBLGhFg/download.jpg",
+      "serviceTitle": "Fitness Training",
+      "companyName": "FitLife Trainers",
+      "website": "https://www.programming-hero.com/",
+      "description": "Personalized fitness plans and training sessions.",
+      "category": "Fitness",
+      "price": 200
+    },
+    {
+      "serviceImage": "https://i.ibb.co.com/mFJsS60/tlr3b5xebgkjuxlq1qhz.webp",
+      "serviceTitle": "Graphic Design Services",
+      "companyName": "DesignPro Studio",
+      "website": "https://www.programming-hero.com/",
+      "description": "Creative graphic design for your brand and business.",
+      "category": "Design",
+      "price": 300
+    },
+    {
+      "serviceImage": "https://i.ibb.co.com/dMSjJ1g/images.jpg",
+      "serviceTitle": "Tech Support",
+      "companyName": "TechFix Solutions",
+      "website": "https://www.programming-hero.com/",
+      "description": "24/7 tech support for all your devices.",
+      "category": "Technology",
+      "price": 50
+    },
+    {
+      "serviceImage": "https://i.ibb.co.com/KXdp9xf/EA99-CC738-B99-D0-AA67987-EC2976-D550-F.webp",
+      "serviceTitle": "Digital Marketing",
+      "companyName": "Boostify Marketing",
+      "website": "https://www.programming-hero.com/",
+      "description": "Grow your online presence with our digital marketing services.",
+      "category": "Marketing",
+      "price": 500
+    },
+    {
+      "serviceImage": "https://i.ibb.co.com/r0ND6b3/event-managment.webp",
+      "serviceTitle": "Event Planning",
+      "companyName": "DreamEvent Planners",
+      "website": "https://www.programming-hero.com/",
+      "description": "Make your events unforgettable with our expert planning.",
+      "category": "Events",
+      "price": 800
+    },
+    {
+      "serviceImage": "https://i.ibb.co.com/HV3gVcw/renovation.webp",
+      "serviceTitle": "Home Renovation",
+      "companyName": "FixIt Construction",
+      "website": "https://www.programming-hero.com/",
+      "description": "Affordable and reliable home renovation services.",
+      "category": "Construction",
+      "price": 1000
+    },
+    
+    {
+      "serviceImage": "https://i.ibb.co.com/yydQTqS/download.jpg",
+      "serviceTitle": "Photography Services",
+      "companyName": "ShutterPro Studios",
+      "website": "https://www.programming-hero.com/",
+      "description": "Capture your precious moments with our professional photographers.",
+      "category": "Photography",
+      "price": 400
+    }
+  ]
+  
