@@ -5,7 +5,7 @@ assignment_category_12
 **2**. Purpose:
 The Service Review System is a full-stack web application that enables users to manage and interact with services. Users can log in, add their services, post reviews, and explore feedback left by other users.
 
-**3**. Live Link:
+**3**. Live Link: https://assignment-11-ph-42bfd.web.app/
 
 **4**. Key features:
 **1**. Responsive Design: The website is fully responsive on mobile, tablet, and desktop.
