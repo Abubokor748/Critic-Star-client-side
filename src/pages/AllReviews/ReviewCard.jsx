@@ -1,24 +1,35 @@
-import React from 'react';
+import React from "react";
+import { FaStar, FaRegStar } from "react-icons/fa"; // Import star icons
 
 const ReviewCard = ({ review }) => {
-
-    const { _id, photo, reviewDate, rating, textReview } = review;
+    const { user, reviewDate, rating, textReview } = review;
 
     return (
-        <div>
-            <div className="card border card-compact mx-auto bg-base-100 w-96 p-3 shadow-xl">
-                <figure>
-                    <img className='p-2 rounded-3xl'
-                        src={photo}
-                        alt="photo" />
-                </figure>
-                <div className="card-body">
-                    <h2 className="card-title">Reviewed at: {reviewDate}</h2>
-                    <p className="text-lg text-gray-700">Rating: {rating}</p>
-                    <p className="text-lg text-gray-700">Review: {textReview}</p>
+        <div className="card border mx-auto bg-white w-96 p-4 shadow-lg rounded-lg">
+            {/* User Info Section */}
+            <div className="flex items-center gap-4">
+                {/* User Avatar */}
+                <img
+                    src={user?.photo}
+                    alt="User Avatar"
+                    className="w-12 h-12 rounded-full border"
+                />
+                {/* User Name & Date */}
+                <div>
+                    <h3 className="font-semibold text-lg">{user?.name || "User"}</h3>
+                    <p className="text-gray-500 text-sm">{new Date(reviewDate).toLocaleDateString()}</p>
                 </div>
             </div>
-            
+
+            {/* Star Rating */}
+            <div className="flex items-center mt-2 text-yellow-500">
+                {Array.from({ length: 5 }).map((_, index) =>
+                    index < rating ? <FaStar key={index} /> : <FaRegStar key={index} />
+                )}
+            </div>
+
+            {/* Review Text */}
+            <p className="text-gray-700 mt-3">{textReview}</p>
         </div>
     );
 };

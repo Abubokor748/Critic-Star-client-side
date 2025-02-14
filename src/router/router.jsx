@@ -13,6 +13,7 @@ import EveryServices from "../pages/EveryServices/EveryServices";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 import WriteAReview from "../pages/WriteAReview/WriteAReview";
 import AllReviews from "../pages/AllReviews/AllReviews";
+import MyReviews from "../pages/MyReviews/MyReviews";
 
 const router = createBrowserRouter([
   {
@@ -20,22 +21,31 @@ const router = createBrowserRouter([
     element: <MainLayout></MainLayout>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
+
+      // no security route
       {
         path: "/",
         element: <Home></Home>,
       },
       {
+        path: "/all_Services",
+        element: <EveryServices></EveryServices>,
+      },
+
+      // private route
+      {
         path: "/reviews",
-        element: <AllReviews></AllReviews>,
+        element: <PrivateRoute><AllReviews></AllReviews></PrivateRoute>
       },
       {
         path: "/services/:id",
-        element: <ServiceDetails></ServiceDetails>,
+        element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`https://assignment-11-backend-seven.vercel.app/services/${params.id}`)
+        // loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`,)
       },
       {
-        path: "/all_Services",
-        element: <EveryServices></EveryServices>,
+        path: "/my_reviews",
+        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
       },
       {
         path: "/add_services",

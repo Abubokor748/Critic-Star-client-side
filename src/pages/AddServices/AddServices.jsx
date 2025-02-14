@@ -48,33 +48,44 @@ const AddService = () => {
             return;
         }
 
+        // sending them in server 
+        const newService = {
+            serviceImage,
+            serviceTitle,
+            companyName,
+            website,
+            description,
+            category,
+            price,
+        };
+
 
         // Sending data to the server
-        // fetch("https://example.com/api/services", {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify(newService),
-        // })
-        //   .then((res) => res.json())
-        //   .then((data) => {
-        //     if (data.insertedId) {
-        //       Swal.fire({
-        //         title: "Success!",
-        //         text: "Service added successfully",
-        //         icon: "success",
-        //         confirmButtonText: "OK",
-        //       });
+        fetch("https://assignment-11-backend-seven.vercel.app/services", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newService),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Service added successfully",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                    });
 
-        //       // Reset form after successful submission
-        //       form.reset();
-        //     }
-        //   })
-        //   .catch((err) => {
-        //     console.error("Error:", err);
-        //     toast.error("Failed to add service!");
-        //   });
+                    // Reset form after successful submission
+                    form.reset();
+                }
+            })
+            .catch((err) => {
+                console.error("Error:", err);
+                toast.error("Failed to add service!");
+            });
     };
 
     return (

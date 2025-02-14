@@ -8,6 +8,7 @@ const AllReviews = () => {
 
     useEffect(() => {
         fetch('https://assignment-11-backend-seven.vercel.app/reviews')
+        // fetch('http://localhost:5000/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
@@ -19,7 +20,7 @@ const AllReviews = () => {
                     reviews.map(review => <ReviewCard key={review._id} review={review}></ReviewCard>)
                 }
             </div>
-            <div className='my-3 mt-10'>
+            <div className='my-3 mt-10 mx-auto text-center'>
                 <Link to="/write_review">
                     <button className='btn w-96 text-white bg-gray-800'>Write A Review?</button>
                 </Link>

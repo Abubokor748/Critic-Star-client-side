@@ -1,6 +1,9 @@
-assignment_category_12
+WAVE - 2
+Assignment - 11
 
-**1**. Project Name = CriticStar
+assignment_category_12   
+
+**1**. Project Name: CriticStar
 
 **2**. Purpose:
 The Service Review System is a full-stack web application that enables users to manage and interact with services. Users can log in, add their services, post reviews, and explore feedback left by other users.

@@ -12,6 +12,7 @@
   "dependencies": {
     "@lottiefiles/lottie-player": "^2.0.12",
     "@smastrom/react-rating": "^1.5.0",
+    "axios": "^1.7.9",
     "firebase": "^11.1.0",
     "install": "^0.13.0",
     "localforage": "^1.10.0",

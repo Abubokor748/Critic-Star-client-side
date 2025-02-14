@@ -35,13 +35,14 @@ const WriteAReview = () => {
             textReview,
             rating,
             reviewDate: new Date(),
-            user : {
-                name: user?.name,
-                photo: "user?.photoURL",
+            user: {
+                name: user?.displayName || 'User',
+                photo: "user?.photoURL || 'photoURL'",
             },
         };
 
         // Save review in the database
+        // https://assignment-11-backend-seven.vercel.app/reviews
         fetch('https://assignment-11-backend-seven.vercel.app/reviews', {
             method: 'POST',
             headers: {
@@ -71,6 +72,12 @@ const WriteAReview = () => {
             <h2 className="text-2xl font-bold mb-4 text-center">Add Your Review</h2>
             <form onSubmit={handleAddReview} className="space-y-4">
                 {/* Textarea for review */}
+                <div>
+                    <label className="block font-medium mb-2">Your Name:</label>
+                    <input type="text"
+                    value={user?.displayName} disabled
+                    placeholder='Your name' className="w-full p-2 border rounded" />
+                </div>
                 <div>
                     <label className="block font-medium mb-2">Your Review:</label>
                     <textarea

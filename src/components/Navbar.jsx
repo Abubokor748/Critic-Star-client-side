@@ -2,37 +2,44 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import { toast } from 'react-toastify';
-
 import websiteIcon from "../../src/assets/IconForWeb-Fav.png";
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
-
     // console.log(user);
 
     const handleSignout = () => {
         logOut()
-        .then(() => {
-            console.log('success');
-            toast.success("Logged in Successfully");
-        })
-        .catch(error => {
-            console.log('error with log out');
-            toast.error("Wrong Email or Password");
-        })
+            .then(() => {
+                // console.log('success');
+                toast.success("Logged out Successfully");
+            })
+            .catch(error => {
+                // console.log('error with log out');
+                toast.error("Something went wrong");
+            })
     }
 
     const menu = <>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/reviews">Reviews</NavLink></li>
-        {
+        <li><NavLink to="/all_Services">Services</NavLink></li>
+        {/* {
             user && <>
-            <li><NavLink to="/add_services">Add Service</NavLink></li>
-            <li><NavLink to="/all_services">Services</NavLink></li>
+                <li><NavLink to="/add_services">Add Service</NavLink></li>
+                <li><NavLink to="/all_services">Services</NavLink></li>
             </>
+        } */}
+        {
+            user ? <>
+                <li><NavLink to="/add_services">Add Service</NavLink></li>
+                <li><NavLink to="/reviews">Reviews</NavLink></li>
+                <li><NavLink to="/my_reviews">My Reviews</NavLink></li>
+                <button onClick={handleSignout}>Sign out</button>
+            </> : <>
+                <Link className="btn" to="/auth/register">Register</Link>
+                <Link className="btn" to="/auth/login">Log In</Link> </>
         }
-        {/* <li><NavLink to="/addServices">Add Services</NavLink></li> */}
     </>
 
     return (
@@ -59,26 +66,32 @@ const Navbar = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             {menu}
+
                         </ul>
                     </div>
                     <Link to="/"><img src={websiteIcon} className='w-10 ml-3' alt="" /></Link>
                     {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
                 </div>
 
-                {/* nav end */}
-                <div className="navbar-end space-x-6">
+                {/* nav center */}
+                <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 items-center gap-3">
                         {menu}
-                    {
-                        user ? <>
-                            <button onClick={handleSignout}>Sign out</button>
-                        </> : <>
+                        {/* {
+                            user ? <>
+                                <button onClick={handleSignout}>Sign out</button>
+                            </> : <>
 
-                            <Link className="btn" to="/auth/register">Register</Link>
-                            <Link className="btn" to="/auth/login">Log In</Link> </>
-                    }
+                                <Link className="btn" to="/auth/register">Register</Link>
+                                <Link className="btn" to="/auth/login">Log In</Link> </>
+                        } */}
                     </ul>
-                    <div className="dropdown dropdown-end">
+                    
+                </div>
+
+                {/* nav end */}
+                <div className='navbar-end space-x-6'>
+                <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 <img
