@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 import { AuthContext } from "../../provider/AuthProvider";
 import LogInAnimation from '../../assets/Login.json'
 import Lottie from "lottie-react";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
 
@@ -58,6 +60,9 @@ const Login = () => {
 
   return (
     <div className="hero bg-base-200 min-h-screen">
+      <Helmet>
+        <title>Critic Star | Login</title>
+      </Helmet>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left w-96 p-2">
           <Lottie animationData={LogInAnimation}></Lottie>
@@ -115,13 +120,7 @@ const Login = () => {
           </p>
 
           <div className="p-3">
-            <button
-              onClick={handleGoogleLogin}
-              className="flex items-center justify-center w-full py-3 text-white bg-blue-500 hover:bg-white hover:text-blue-500 border-2 border-transparent hover:border-blue-500 transition duration-300 shadow-md rounded-xl"
-            >
-              <FcGoogle className="text-2xl mr-2 text-white" />
-              <span className="font-medium">Continue with Google</span>
-            </button>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
 

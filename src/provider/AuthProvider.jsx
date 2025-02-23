@@ -1,105 +1,96 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut,
-  updateProfile,
-  GoogleAuthProvider,
   signInWithPopup,
+  signOut,
+  updateProfile
 } from "firebase/auth";
 import app from "../firebase/firebase.init";
+import axios from "axios";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
+
 const auth = getAuth(app);
-
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-    
-  // Email-password authentication
-  const createNewUser = (email, password) => {
+  const googleProvider = new GoogleAuthProvider();
+
+  const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
-  };
+  }
 
-  // Logout
+  const signIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  }
+
+  const googleSignIn = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  }
+
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
-  };
+  }
 
-  // Login for existing accounts
-  const userLogin = (email, password) => {
-    setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
-  };
-
-  // Google login
-  const loginWithGoogle = () => {
-    setLoading(true);
-    const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider)
-      .then((result) => {
-        setUser(result.user);
-        console.log("Google Login Successful:", result.user);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Google Login Error:", error);
-        setLoading(false);
-      });
-  };
-
-    // update profile
-    const updateUserProfile = async (updatedData) => {
-      if (!auth.currentUser) {
-        throw new Error("No user is currently logged in.");
-      }
-  
-      try {      
-        await updateProfile(auth.currentUser, updatedData);
-  
-        setUser((prevUser) => ({
-          ...prevUser,
-          ...updatedData,
-        }));
-  
-        console.log("Profile updated successfully:", updatedData);
-      } catch (error) {
-        console.error("Error updating profile:", error);
-        throw error;
-      }
-    };
-    
-
-
-  
-  const authInfo = {
-    user,
-    setUser,
-    createNewUser,
-    logOut,
-    userLogin,
-    loading,
-    updateUserProfile,
-    loginWithGoogle,
-  };
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo
+    });
+  }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
-      setLoading(false);
+      setLoading(true);
+
+      if (currentUser?.email) {
+        const user = { email: currentUser.email };
+        axios.post('http://localhost:5000/jwt', user, {
+          withCredentials: true
+        })
+          .then(res => {
+            console.log(res.data);
+            setLoading(false);
+          });
+      }
+      else {
+        axios.post('http://localhost:5000/logout', {}, {
+          withCredentials: true
+        })
+          .then(res => {
+            console.log(res.data);
+            setLoading(false);
+          }); 
+      }
     });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+
+    return () => unsubscribe();
+  }, []); 
+
+  const authInfo = {
+    user,
+    loading,
+    createUser,
+    signIn,
+    googleSignIn,
+    logOut,
+    updateUserProfile
+  }
 
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

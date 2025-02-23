@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/services/:id",
         element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://assignment-11-backend-seven.vercel.app/services/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
         // loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`,)
       },
       {
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute><AddServices></AddServices></PrivateRoute>,
       },
       {
-        path: "/write_review",
+        path: "/write_review/:serviceId",
         element: <PrivateRoute><WriteAReview></WriteAReview></PrivateRoute>,
       },
       {

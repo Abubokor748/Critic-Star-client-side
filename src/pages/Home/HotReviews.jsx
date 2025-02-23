@@ -6,14 +6,14 @@ const HotReviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch('https://assignment-11-backend-seven.vercel.app/reviews')
+        fetch('http://localhost:5000/reviews')
         // fetch('http://localhost:5000/reviews')
         .then(res => res.json())
         .then(data => setReviews(data))
     } , [])
 
     return (
-        <div className='mt-10 mx-auto'>
+        <div className='mt-10 mb-10 mx-auto'>
             <h2 className='text-3xl font-bold text-center my-5'>Featured Reviews</h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mx-auto'>
                 {

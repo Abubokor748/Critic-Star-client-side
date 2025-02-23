@@ -24,12 +24,7 @@ const Navbar = () => {
     const menu = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/all_Services">Services</NavLink></li>
-        {/* {
-            user && <>
-                <li><NavLink to="/add_services">Add Service</NavLink></li>
-                <li><NavLink to="/all_services">Services</NavLink></li>
-            </>
-        } */}
+        
         {
             user ? <>
                 <li><NavLink to="/add_services">Add Service</NavLink></li>
@@ -37,7 +32,6 @@ const Navbar = () => {
                 <li><NavLink to="/my_reviews">My Reviews</NavLink></li>
                 <button onClick={handleSignout}>Sign out</button>
             </> : <>
-                <Link className="btn" to="/auth/register">Register</Link>
                 <Link className="btn" to="/auth/login">Log In</Link> </>
         }
     </>
@@ -70,6 +64,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to="/"><img src={websiteIcon} className='w-10 ml-3' alt="" /></Link>
+                    <h2 className='ml-4 font-bold'>Critic Star</h2>
                     {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
                 </div>
 
