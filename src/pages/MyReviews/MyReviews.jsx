@@ -15,7 +15,7 @@ const MyReviews = () => {
     }, [user?.email]);
 
     const fetchReviews = () => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        fetch(`https://assignment-11-backend-seven.vercel.app/reviews?email=${user?.email}`)
             .then((res) => res.json())
             .then((data) => setMyReviews(data))
             .catch((error) => console.error("Error fetching user reviews:", error));
@@ -32,7 +32,7 @@ const MyReviews = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/reviews/${id}`, {
+                fetch(`https://assignment-11-backend-seven.vercel.app/reviews/${id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())

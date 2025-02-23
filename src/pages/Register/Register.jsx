@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../provider/AuthProvider";
 import SignInAnimation from "../../assets/registration.json";
 import Lottie from "lottie-react";
-import { FcGoogle } from "react-icons/fc";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import { Helmet } from "react-helmet-async";
 
@@ -46,7 +45,7 @@ const Register = () => {
         // Save user info
         const newUser = { name, email, photoURL };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://assignment-11-backend-seven.vercel.app/users", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newUser),
@@ -64,11 +63,6 @@ const Register = () => {
         console.error("Registration Error:", err.message);
         toast.error("Error creating user: " + err.message);
       });
-  };
-
-  const handleGoogleLogin = () => {
-    // Implement Google login logic here if needed
-    toast.info("Google login functionality to be implemented");
   };
 
   return (

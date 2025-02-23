@@ -14,7 +14,7 @@ const WriteAReview = () => {
 
     useEffect(() => {
         // Fetch service details when component mounts
-        fetch(`http://localhost:5000/services/${serviceId}`)
+        fetch(`https://assignment-11-backend-seven.vercel.app/services/${serviceId}`)
             .then(res => res.json())
             .then(data => setService(data))
             .catch(error => {
@@ -59,7 +59,7 @@ const WriteAReview = () => {
         };
 
         // Save review in the database
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://assignment-11-backend-seven.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

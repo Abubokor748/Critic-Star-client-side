@@ -6,8 +6,8 @@ const HotServices = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
-        // fetch('http://localhost:5000/services')
+        fetch('https://assignment-11-backend-seven.vercel.app/services')
+        // fetch('https://assignment-11-backend-seven.vercel.app/services')
         .then(res => res.json())
         .then(data => setServices(data))
     } , [])

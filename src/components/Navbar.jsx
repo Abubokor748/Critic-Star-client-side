@@ -65,21 +65,12 @@ const Navbar = () => {
                     </div>
                     <Link to="/"><img src={websiteIcon} className='w-10 ml-3' alt="" /></Link>
                     <h2 className='ml-4 font-bold'>Critic Star</h2>
-                    {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
                 </div>
 
                 {/* nav center */}
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 items-center gap-3">
                         {menu}
-                        {/* {
-                            user ? <>
-                                <button onClick={handleSignout}>Sign out</button>
-                            </> : <>
-
-                                <Link className="btn" to="/auth/register">Register</Link>
-                                <Link className="btn" to="/auth/login">Log In</Link> </>
-                        } */}
                     </ul>
                     
                 </div>
