@@ -2,6 +2,8 @@ import React from "react";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import { FaCloudUploadAlt, FaTag, FaLink, FaDollarSign, FaAlignLeft } from "react-icons/fa";
+
 
 const AddService = () => {
     const handleAddService = (e) => {
@@ -87,131 +89,163 @@ const AddService = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-6">
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50 py-12 px-4 sm:px-6 lg:px-8">
             <Helmet>
                 <title>Critic Star | Add Services</title>
             </Helmet>
-            <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
-                Add a New Service
-            </h2>
 
-            <form onSubmit={handleAddService} className="bg-white shadow-lg rounded-lg p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    {/* Service Image */}
-                    <div className="space-y-2">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Service Image URL *
-                        </label>
-                        <input
-                            type="text"
-                            name="serviceImage"
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="https://example.com/image.jpg"
-                            required
-                        />
-                        <p className="text-sm text-gray-500">
-                            Must start with http/https and end with .jpg, .jpeg, .png, .gif
-                        </p>
-                    </div>
-
-                    {/* Service Title */}
-                    <div className="space-y-2">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Service Title *
-                        </label>
-                        <input
-                            type="text"
-                            name="serviceTitle"
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Enter service title"
-                            required
-                        />
-                    </div>
-
-                    {/* Company Name */}
-                    <div className="space-y-2">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Company Name *
-                        </label>
-                        <input
-                            type="text"
-                            name="companyName"
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Enter company name"
-                            required
-                        />
-                    </div>
-
-                    {/* Website */}
-                    <div className="space-y-2">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Website URL *
-                        </label>
-                        <input
-                            type="text"
-                            name="website"
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="https://company-website.com"
-                            required
-                        />
-                    </div>
-
-                    {/* Category */}
-                    <div className="space-y-2">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Category *
-                        </label>
-                        <select
-                            name="category"
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-white"
-                        >
-                            <option value="">Select Category</option>
-                            <option value="technology">Technology</option>
-                            <option value="health">Health</option>
-                            <option value="education">Education</option>
-                            <option value="finance">Finance</option>
-                            <option value="others">Others</option>
-                        </select>
-                    </div>
-
-                    {/* Price */}
-                    <div className="space-y-2">
-                        <label className="block text-sm font-medium text-gray-700">
-                            Price (USD) *
-                        </label>
-                        <input
-                            type="number"
-                            name="price"
-                            step="0.01"
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="0.00"
-                            required
-                        />
-                    </div>
+            <div className="max-w-4xl mx-auto">
+                <div className="text-center mb-12">
+                    <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+                        Add New Service
+                    </h2>
+                    <p className="mt-3 text-lg text-gray-600">
+                        Share your service with our community
+                    </p>
                 </div>
 
-                {/* Description */}
-                <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Description *
-                    </label>
-                    <textarea
-                        name="description"
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Describe the service in detail..."
-                        rows="4"
-                        required
-                    ></textarea>
-                </div>
+                <form onSubmit={handleAddService} className="bg-white rounded-2xl shadow-xl p-8 sm:p-10 space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Service Image */}
+                        <div className="space-y-4">
+                            <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
+                                <FaCloudUploadAlt className="text-purple-600" />
+                                Service Image URL
+                            </label>
+                            <div className="relative">
+                                <input
+                                    type="text"
+                                    name="serviceImage"
+                                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all"
+                                    placeholder="https://example.com/image.jpg"
+                                    required
+                                />
+                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                    <FaLink />
+                                </span>
+                            </div>
+                            <p className="text-sm text-gray-500 ml-2">
+                                Supported formats: .jpg, .jpeg, .png, .gif
+                            </p>
+                        </div>
 
-                {/* Submit Button */}
-                <button
-                    type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-300 hover:scale-105"
-                >
-                    Add Service
-                </button>
-            </form>
+                        {/* Service Title */}
+                        <div className="space-y-4">
+                            <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
+                                <FaTag className="text-blue-500" />
+                                Service Title
+                            </label>
+                            <input
+                                type="text"
+                                name="serviceTitle"
+                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all"
+                                placeholder="Amazing Web Service"
+                                required
+                            />
+                        </div>
+
+                        {/* Company Name */}
+                        <div className="space-y-4">
+                            <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
+                                <FaTag className="text-blue-500" />
+                                Company Name
+                            </label>
+                            <input
+                                type="text"
+                                name="companyName"
+                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all"
+                                placeholder="Tech Corp Inc."
+                                required
+                            />
+                        </div>
+
+                        {/* Website */}
+                        <div className="space-y-4">
+                            <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
+                                <FaLink className="text-purple-600" />
+                                Website URL
+                            </label>
+                            <div className="relative">
+                                <input
+                                    type="text"
+                                    name="website"
+                                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all"
+                                    placeholder="https://company.com"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        {/* Category */}
+                        <div className="space-y-4">
+                            <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
+                                <FaTag className="text-blue-500" />
+                                Category
+                            </label>
+                            <div className="relative">
+                                <select
+                                    name="category"
+                                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl appearance-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 bg-white cursor-pointer"
+                                >
+                                    <option value="">Select Category</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="health">Health</option>
+                                    <option value="education">Education</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="others">Others</option>
+                                </select>
+                                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                    ▼
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Price */}
+                        <div className="space-y-4">
+                            <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
+                                <FaDollarSign className="text-green-500" />
+                                Price
+                            </label>
+                            <div className="relative">
+                                <input
+                                    type="number"
+                                    name="price"
+                                    step="0.01"
+                                    className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all"
+                                    placeholder="0.00"
+                                    required
+                                />
+                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                    $
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Description */}
+                    <div className="space-y-4">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center gap-2">
+                            <FaAlignLeft className="text-purple-600" />
+                            Description
+                        </label>
+                        <textarea
+                            name="description"
+                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all"
+                            placeholder="Describe your service in detail..."
+                            rows="5"
+                            required
+                        ></textarea>
+                    </div>
+
+                    {/* Submit Button */}
+                    <button
+                        type="submit"
+                        className="w-full bg-gradient-to-r from-purple-600 to-blue-500 text-white py-4 px-6 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                    >
+                        Publish Service
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };
