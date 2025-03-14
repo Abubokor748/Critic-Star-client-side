@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import { toast } from 'react-toastify';
 import websiteIcon from "../../src/assets/IconForWeb-Fav.png";
+import DarkModeToggle from './DarkModeToggle/DarkModeToggle';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -126,6 +127,7 @@ const Navbar = () => {
 
                 {/* User Section */}
                 <div className="navbar-end gap-4">
+                    <DarkModeToggle></DarkModeToggle>
                     {user ? (
                         <div className="flex items-center gap-4">
                             <div className="dropdown dropdown-end">

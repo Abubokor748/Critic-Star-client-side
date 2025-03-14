@@ -5,6 +5,8 @@ import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { FaStar, FaRegStar } from 'react-icons/fa';
+
 
 const WriteAReview = () => {
     const { user } = useContext(AuthContext);
@@ -84,44 +86,61 @@ const WriteAReview = () => {
                 toast.error('Failed to submit review');
             });
     };
-
+    
     return (
-        <div className="p-6 my-10 bg-gray-100 rounded-md max-w-2xl mx-auto">
+        <div className="min-h-screen bg-gradient-to-b from-slate-50 to-purple-50 py-12 px-4 sm:px-6 lg:px-8">
             <Helmet>
                 <title>Critic Star | Write A Review</title>
             </Helmet>
-            <h2 className="text-2xl font-bold mb-4 text-center">Add Your Review</h2>
 
-            {service && (
-                <div className="mb-6 p-4 bg-blue-50 rounded-md">
-                    <h3 className="text-lg font-semibold">Reviewing: {service.serviceTitle}</h3>
-                    <p className="text-sm">Company: {service.companyName}</p>
-                </div>
-            )}
+            <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div className="p-8">
+                    <div className="text-center mb-8">
+                        <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+                            Write Your Review
+                        </h2>
+                        {service && (
+                            <div className="mt-4 p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl">
+                                <h3 className="text-xl font-semibold text-gray-800">
+                                    Reviewing: {service.serviceTitle}
+                                </h3>
+                                <p className="text-gray-600 mt-1">
+                                    Company: {service.companyName}
+                                </p>
+                            </div>
+                        )}
+                    </div>
 
-            <form onSubmit={handleAddReview} className="space-y-4">
-                <div>
-                    <label className="block font-medium mb-2">Your Name:</label>
-                    <input
-                        type="text"
-                        value={user?.displayName || ''}
-                        disabled
-                        className="w-full p-2 border rounded bg-gray-50"
-                    />
-                </div>
+                    <form onSubmit={handleAddReview} className="space-y-6">
+                        {/* User Name */}
+                        <div className="space-y-2">
+                            <label className="block text-sm font-medium text-gray-700">
+                                Your Name
+                            </label>
+                            <input
+                                type="text"
+                                value={user?.displayName || ''}
+                                disabled
+                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 bg-gray-50"
+                            />
+                        </div>
 
-                <div>
-                    <label className="block font-medium mb-2">Your Review:</label>
-                    <textarea
-                        name="textReview"
-                        className="w-full p-2 border rounded"
-                        placeholder="Write your review here (at least 10 characters)"
-                        rows="4"
-                        required
-                    ></textarea>
-                </div>
+                        {/* Review Text */}
+                        <div className="space-y-2">
+                            <label className="block text-sm font-medium text-gray-700">
+                                Your Review
+                            </label>
+                            <textarea
+                                name="textReview"
+                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
+                                placeholder="Share your experience (minimum 10 characters)"
+                                rows="5"
+                                required
+                            ></textarea>
+                        </div>
 
-                <div>
+                        {/* Rating */}
+                        <div>
                     <label className="block font-medium mb-2">Your Rating:</label>
                     <Rating
                         onClick={handleRating}
@@ -133,13 +152,16 @@ const WriteAReview = () => {
                     {rating > 0 && <span className="ml-2 text-gray-600"></span>}
                 </div>
 
-                <button
-                    type="submit"
-                    className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors"
-                >
-                    Add Review
-                </button>
-            </form>
+                        {/* Submit Button */}
+                        <button
+                            type="submit"
+                            className="w-full bg-gradient-to-r from-purple-600 to-blue-500 text-white py-3 px-6 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                        >
+                            Submit Review
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 };

@@ -66,93 +66,109 @@ const Register = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50 py-12 px-4 sm:px-6 lg:px-8">
       <Helmet>
         <title>Critic Star | Register</title>
       </Helmet>
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left w-96 p-2">
-          <Lottie animationData={SignInAnimation} />
+
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12">
+        {/* Animation Section */}
+        <div className="w-full lg:w-1/2">
+          <Lottie
+            animationData={SignInAnimation}
+            className="max-w-md mx-auto"
+          />
         </div>
 
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <h2 className="m-3 mb-0 p-3 pb-0 mx-auto font-bold text-2xl">
-            Register Your Account
-          </h2>
+        {/* Registration Form Section */}
+        <div className="w-full lg:w-1/2 max-w-md">
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div className="p-8">
+              <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+                Create Your Account
+              </h2>
 
-          <form onSubmit={handleSubmit} className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Name</span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter Your Name"
-                className="input input-bordered"
-                required
-              />
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your full name"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Photo URL
+                  </label>
+                  <input
+                    type="text"
+                    name="photo"
+                    placeholder="Enter your photo URL"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Create a password"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
+                    required
+                  />
+                  {error.password && (
+                    <p className="text-sm text-red-600 mt-2">
+                      {error.password}
+                    </p>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-purple-600 to-blue-500 text-white py-3 px-6 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                >
+                  Create Account
+                </button>
+              </form>
+
+              <div className="mt-6 text-center">
+                <p className="text-gray-600">
+                  Already have an account?{' '}
+                  <Link
+                    to="/auth/login"
+                    className="font-semibold text-purple-600 hover:text-purple-500"
+                  >
+                    Login here
+                  </Link>
+                </p>
+              </div>
+
+              <div className="mt-6">
+                <SocialLogin />
+              </div>
             </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Photo URL</span>
-              </label>
-              <input
-                type="text"
-                name="photo"
-                placeholder="Photo URL"
-                className="input input-bordered"
-              />
-            </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter Your Email"
-                className="input input-bordered"
-                required
-              />
-            </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter Your Password"
-                className="input input-bordered"
-                required
-              />
-            </div>
-
-            {error.password && (
-              <div className="text-red-600 text-sm mt-1">{error.password}</div>
-            )}
-
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">
-                Register
-              </button>
-            </div>
-          </form>
-
-          <p className="text-center mb-4">
-            Already have an account?{" "}
-            <Link to="/auth/login" className="link link-primary">
-              Login
-            </Link>
-          </p>
-
-          <div className="p-3 mb-6 mx-6">
-
-            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
